@@ -436,11 +436,13 @@ function renderUrlLink(url) {
   const knownHosts = {
     'github.com': 'github',
     'slack.com': 'slack',
+    'docs.google.com': 'drive',
   };
 
   const a = document.createElement('a');
   a.href = url;
   a.rel = 'noopener noreferrer';
+  a.target = '_blank';
 
   let hostname;
   try {
