@@ -1,0 +1,140 @@
+.pomo {
+  padding: 6px var(--spacing-horizontal);
+}
+
+.pomo > * {
+  margin: 6px 0;
+}
+
+.pomo .progress {
+  display: flex;
+  gap: 1ch;
+  margin: 6px 0;
+  justify-content: center;
+  list-style: none;
+}
+
+.pomo .progress li {
+  display: flex;
+  align-items: center;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  font-size: var(--text-m);
+  justify-content: center;
+}
+
+.pomo .progress li[aria-current] {
+  border-color: var(--color-text-muted);
+}
+
+.pomo .progress li[data-type="break"] {
+  border-width: 4px;
+}
+
+.pomo .progress li[data-type="longbreak"] {
+  border-width: 6px;
+}
+
+.pomo .progress li[data-type="break"][data-completed],
+.pomo .progress li[data-type="longbreak"][data-completed] {
+  border-color: var(--green-500);
+}
+
+.pomo .progress li[data-type="work"][data-completed]::after {
+  content: '🍅';
+}
+
+.pomo .timer-wrapper {
+  margin: 12px 0;
+}
+
+.pomo .timer-wrapper .button-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.pomo .timer {
+  font-family: var(--font-mono);
+  font-size: calc(100dvw / 5);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (min-width: 690px) {
+  .pomo .timer {
+    font-size: calc(100dvw / 8);
+  }
+}
+
+@media (min-width: 930px) {
+  .pomo .timer {
+    font-size: calc(100dvw / 14);
+  }
+}
+
+@media (min-width: 1670px) {
+  .pomo .timer {
+    font-size: 106px;
+  }
+}
+
+.pomo .timer-wrapper .button {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  text-align: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.pomo .timer-wrapper .button:hover,
+.pomo .timer-wrapper .button:focus-visible {
+  background: var(--color-border);
+  filter: brightness(0.9);
+  transform: translateY(1px);
+}
+
+.pomo .timer-wrapper .button:disabled {
+  background: var(--color-bg);
+  color: var(--color-border);
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+.pomo .timer-wrapper .button.start,
+.pomo .timer-wrapper .button.pause {
+  border-color: var(--green-500);
+  background: var(--green-500);
+  color: var(--green-100);
+}
+
+.pomo .timer-wrapper .button.start:disabled,
+.pomo .timer-wrapper .button.pause:disabled {
+  display: none;
+}
+
+.pomo .stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pomo .stats span {
+  font-size: var(--text-m);
+}
+
+.pomo .stats span.average::before {
+  content: '~';
+  font-size: var(--text-xs);
+  vertical-align: super;
+}

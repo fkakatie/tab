@@ -1,0 +1,16 @@
+{
+  "name": "tab",
+  "version": "1.0.0",
+  "description": "a personal new tab with tasks, calendar notes, bookmarks, and a pomodoro timer.",
+  "type": "module",
+  "author": "fkakatie",
+  "scripts": {
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint scripts.js modules/",
+    "lint:css": "stylelint \"style.css\" \"modules/**/*.css\""
+  },
+  "devDependencies": {
+    "eslint": "^9.39.4",
+    "stylelint": "^17.7.0"
+  }
+}

@@ -1,0 +1,40 @@
+<div class="pomo">
+  <div class="heading">
+    <h2 class="detail m">Pomodoro</h2>
+  </div>
+  <div class="timer-wrapper">
+    <ol class="progress" aria-label="Session progress">
+      <li data-type="work" aria-label="Work interval"></li>
+      <li data-type="break" aria-label="Break interval"></li>
+      <li data-type="work" aria-label="Work interval"></li>
+      <li data-type="break" aria-label="Break interval"></li>
+      <li data-type="work" aria-label="Work interval"></li>
+      <li data-type="break" aria-label="Break interval"></li>
+      <li data-type="work" aria-label="Work interval"></li>
+      <li data-type="longbreak" aria-label="Long break interval"></li>
+    </ol>
+    <div class="timer" role="timer" aria-label="Pomodoro timer">25:00</div>
+    <div class="button-wrapper">
+      <button class="button back" type="button" aria-label="Previous interval" disabled>
+        <img src="icons/back.svg" data-icon alt="" aria-hidden="true">
+      </button>
+      <button class="button start" type="button" aria-label="Start timer">
+        <img src="icons/start.svg" data-icon alt="" aria-hidden="true">
+      </button>
+      <button class="button pause" type="button" aria-label="Pause timer" disabled>
+        <img src="icons/pause.svg" data-icon alt="" aria-hidden="true">
+      </button>
+      <button class="button reset" type="button" aria-label="Reset timer" disabled>
+        <img src="icons/reset.svg" data-icon alt="" aria-hidden="true">
+      </button>
+      <button class="button skip" type="button" aria-label="Skip interval">
+        <img src="icons/skip.svg" data-icon alt="" aria-hidden="true">
+      </button>
+    </div>
+  </div>
+  <div class="stats">
+    <p class="detail s">Today: <span class="today">0</span></p>
+    <p class="detail s">Week: <span class="week">0</span></p>
+    <p class="detail s">Per Day: <span class="average">0</span></p>
+  </div>
+</div>

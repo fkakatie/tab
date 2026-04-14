@@ -1,0 +1,228 @@
+.calendar {
+  --cal-cols: repeat(7, minmax(0, 1fr));
+  padding: 6px 0;
+}
+
+.calendar > * {
+  margin: 6px;
+}
+
+.calendar ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* mobile nav */
+
+.calendar nav {
+  padding: 0;
+}
+
+@media (min-width: 930px) {
+  .calendar nav {
+    display: none;
+  }
+}
+
+.calendar nav button {
+  width: 44px;
+  height: 44px;
+  color: var(--color-text-muted);
+}
+
+.calendar nav button:disabled {
+  visibility: hidden;
+}
+
+/* header */
+
+.calendar .header {
+  margin: 0;
+  background: var(--color-bg);
+  padding-bottom: 6px;
+}
+
+.calendar .header ol {
+  display: grid;
+  grid-template-columns: var(--cal-cols);
+  justify-items: center;
+}
+
+@media (min-width: 930px) {
+  .calendar .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-top: 24px;
+    padding-bottom: 12px;
+  }
+}
+
+.calendar .weeks-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(to right, transparent 71.5%, var(--gray-50) 71.5%);
+  overflow-block: visible;
+  overflow-inline: clip;
+}
+
+/* weeks */
+
+.calendar .weeks {
+  display: flex;
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+  overflow-block: visible;
+  overflow-inline: auto;
+}
+
+.calendar .weeks::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 930px) {
+  .calendar .weeks {
+    display: block;
+  }
+
+  .calendar .weeks::-webkit-scrollbar {
+    display: unset;
+  }  
+}
+
+/* week row */
+
+.calendar .week {
+  display: grid;
+  grid-template-columns: var(--cal-cols);
+  flex: 0 0 100%;
+  position: relative;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+/* day cell */
+
+.calendar .day {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 44px;
+  justify-content: center;
+  box-sizing: content-box;
+  margin: 6px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-s);
+  font-weight: 400;
+  line-height: 1;
+  transition: background 0.1s;
+}
+
+.calendar .day:hover,
+.calendar .day[data-active] {
+  background: var(--color-border);
+}
+
+.calendar .day:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.calendar .day:disabled:hover {
+  border-color: var(--color-border);
+  background: transparent;
+}
+
+.calendar .day[data-position="start"] {
+  border-top-color: var(--color-border);
+  border-left-color: var(--color-border);
+}
+
+.calendar .day[data-position="end"] {
+  border-bottom-color: var(--color-border);
+  border-right-color: var(--color-border);
+}
+
+.calendar .day[data-state="current-month"] {
+  font-weight: 500;
+}
+
+.calendar .day[aria-current="date"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: bold;
+}
+
+.calendar .day[data-state="past"] > * {
+  opacity: 0.5;
+}
+
+@media (min-width: 930px) {
+  .calendar .day[data-month]::before {
+    content: attr(data-month);
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    color: var(--color-border);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .calendar .day:hover[data-month]::before {
+    color: var(--color-text-muted);
+  }
+}
+
+.calendar .day .icon.dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  opacity: 0.3;
+}
+
+.calendar .day:not([aria-current="date"]):not([data-state]) .icon.emoji {
+  filter: brightness(1.3) grayscale(0.7);
+  opacity: 0.5;
+}
+
+.calendar .day .icon.emoji + .num {
+  display: none;
+}
+
+/* calendar edit form */
+
+.calendar .form-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 6px;
+  right: 6px;
+  z-index: 1;
+  box-shadow: var(--shadow);
+}
+
+/* tooltip */
+
+.calendar .tooltip {
+  position: fixed;
+  z-index: 3;
+  padding: 0.5ch 0.75ch;
+  border-radius: var(--radius-s);
+  background: var(--color-text);
+  color: var(--color-bg);
+  opacity: 0;
+  font-size: var(--text-xs);
+  pointer-events: none;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.calendar .tooltip[aria-hidden="false"] {
+  opacity: 1;
+}

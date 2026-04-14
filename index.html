@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab</title>
+  <link rel="icon" href="icons/tab.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="scripts.js"></script>
+</head>
+
+<body style="visibility: hidden;">
+  <div class="layout">
+    <section id="calendar" class="col l" aria-label="Calendar" style="visibility: hidden;"></section>
+    <main id="tasks" class="col m" style="visibility: hidden;"></main>
+    <aside class="col r">
+      <section id="pomo" style="visibility: hidden;"></section>
+      <section id="bookmarks" style="visibility: hidden;"></section>
+    </aside>
+  </div>
+
+  <dialog id="welcome" class="welcome" aria-labelledby="welcome-title">
+    <div class="heading">
+      <h2 class="detail m" id="welcome-title">Welcome to Tab</h2>
+      <button type="button" class="button close" aria-label="Close welcome">
+        <img src="icons/close.svg" data-icon alt="" aria-hidden="true">
+      </button>
+    </div>
+    <p>A personal new tab with tasks, calendar notes, bookmarks, and a Pomodoro timer. Everything lives in your browser — no account, no sync.</p>
+    <dl>
+      <div>
+        <dt>Tasks</dt>
+        <dd>Add tasks with due dates and links. Prioritize or park them for later.</dd>
+      </div>
+      <div>
+        <dt>Calendar</dt>
+        <dd>Add a daily note or reminder to any day.</dd>
+      </div>
+      <div>
+        <dt>Bookmarks</dt>
+        <dd>Quick-access links, drag to reorder.</dd>
+      </div>
+      <div>
+        <dt>Pomodoro</dt>
+        <dd>25-minute focus sessions with short and long breaks.</dd>
+      </div>
+    </dl>
+    <p>Press <kbd>?</kbd> anytime to see keyboard shortcuts.</p>
+    <div class="button-wrapper">
+      <button type="button" class="button close">Get started</button>
+    </div>
+  </dialog>
+
+  <dialog id="shortcuts" class="shortcuts" aria-labelledby="shortcuts-title">
+    <div class="heading">
+      <h2 class="detail m" id="shortcuts-title">Keyboard Shortcuts</h2>
+      <button type="button" class="button close" aria-label="Close shortcuts">
+        <img src="icons/close.svg" data-icon alt="" aria-hidden="true">
+      </button>
+    </div>
+    <dl>
+      <div>
+        <dt><kbd>N</kbd><kbd>/</kbd></dt>
+        <dd>New task</dd>
+      </div>
+      <div>
+        <dt><kbd>B</kbd></dt>
+        <dd>New bookmark</dd>
+      </div>
+      <div>
+        <dt><kbd>T</kbd></dt>
+        <dd>New appointment for today</dd>
+      </div>
+      <div>
+        <dt><kbd>P</kbd></dt>
+        <dd>Start / pause pomodoro</dd>
+      </div>
+      <div>
+        <dt><kbd>R</kbd></dt>
+        <dd>Reset pomodoro</dd>
+      </div>
+      <div>
+        <dt><kbd><</kbd></dt>
+        <dd>Go back a pomodoro interval</dd>
+      </div>
+      <div>
+        <dt><kbd>></kbd></dt>
+        <dd>Skip to the next pomodoro interval</dd>
+      </div>
+        <div>
+          <dt><kbd>X</kbd></dt>
+          <dd>Export data to clipboard</dd>
+        </div>
+        <div>
+          <dt><kbd>I</kbd></dt>
+          <dd>Import data from clipboard</dd>
+        </div>
+      <div>
+        <dt><kbd>?</kbd></dt>
+        <dd>Show shortcuts</dd>
+      </div>
+    </dl>
+  </dialog>
+</body>
+
+</html>

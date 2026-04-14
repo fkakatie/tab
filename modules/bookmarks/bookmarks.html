@@ -1,0 +1,48 @@
+<div class="bookmarks">
+  <div class="heading">
+    <h2 class="detail m">Bookmarks</h2>
+    <button class="button mark" type="button" aria-expanded="false" aria-controls="bookmark-form" aria-label="Add bookmark">
+      <img src="icons/bookmark.svg" data-icon alt="" aria-hidden="true">
+    </button>
+    <div id="bookmark-form" class="form-wrapper" role="region" aria-label="Add bookmark">
+      <form id="add-bookmark" class="add add-bookmark">
+        <div class="icon-wrapper text-wrapper">
+          <input
+            type="text"
+            name="icon"
+            id="add-bookmark-icon"
+            class="field icon"
+            aria-label="Icon"
+            autocomplete="off"
+            maxlength="4"
+            placeholder="✦">
+          <input
+            type="text"
+            name="bookmark"
+            id="add-bookmark-title"
+            class="field text"
+            aria-label="Add a bookmark"
+            placeholder="Add a bookmark…">
+        </div>
+        <div class="url-wrapper">
+          <input
+            type="url"
+            name="url"
+            id="add-link-url"
+            class="field url"
+            aria-label="Add a link"
+            autocomplete="off"
+            placeholder="https://…"
+            required>
+        </div>
+        <div class="details">
+          <div class="button-wrapper">
+            <button type="submit" class="button save">Save</button>
+            <button type="reset" class="button cancel">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>  
+  </div>
+  <ul class="list"></ul>
+</div>

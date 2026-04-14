@@ -1,0 +1,365 @@
+.tasks {
+  padding: 6px var(--spacing-horizontal);
+}
+
+.tasks ol,
+.tasks ul {
+  list-style: none;
+}
+
+.tasks > * + * {
+  margin-top: 6px;
+}
+
+/* form */
+
+.tasks form .meta > .field.toggle {
+  width: 100%;
+  grid-column: 1 / -1;
+  font-size: var(--text-s);
+}
+
+@media (min-width: 690px) {
+  .tasks form .meta {
+    grid-template-columns: 1fr 2fr max-content;
+  }
+
+  .tasks form .meta > .field.toggle {
+    grid-column: unset;
+  }
+}
+
+@media (min-width: 830px) {
+  .tasks form .meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tasks form .meta > .field.toggle {
+    grid-column: 1 / -1;
+  }
+}
+
+/* sections */
+
+@media (min-width: 830px) {
+  .tasks .lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px var(--spacing-horizontal);
+  }
+
+  .tasks .lists .list.completed {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 930px) {
+  .tasks .lists {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1250px) {
+  .tasks .lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px var(--spacing-horizontal);
+  }
+
+  .tasks .lists .list.completed {
+    grid-column: 1 / -1;
+  }
+}
+
+.tasks .list {
+  margin-bottom: 6px;
+  padding: 6px;
+  border-radius: var(--radius-s);
+  background: var(--gray-300);
+}
+
+.tasks .list.prioritized {
+  background: var(--yellow-300);
+}
+
+.tasks .list.completed {
+  background: transparent;
+}
+
+.tasks summary {
+  margin: 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.tasks summary::-webkit-details-marker {
+  display: none;
+}
+
+.tasks .list.completed .heading {
+  padding: 0;
+}
+
+.tasks .list.completed .heading h3 {
+  flex: 1;
+}
+
+.tasks details img.angle-up,
+.tasks details svg.angle-up {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transform: rotate(90deg);
+  transition: transform 0.1s;
+}
+
+.tasks details[open] img.angle-up,
+.tasks details[open] svg.angle-up {
+  transform: rotate(180deg);
+}
+
+.tasks .list .tasks-list:empty {
+  display: none;
+}
+
+.tasks .list > * {
+  margin: 6px 0;
+  padding: 0 6px;
+}
+
+.tasks .heading {
+  padding-bottom: 6px;
+}
+
+.tasks .heading h2 {
+  margin: 0 6px;
+}
+
+.tasks .list .heading .counter {
+  width: var(--text-xl);
+  height: var(--text-xl);
+  border-radius: 50%;
+  background: var(--gray-100);
+  color: var(--gray-500);
+  opacity: 0.5;
+  font-size: var(--text-xs);
+  line-height: var(--text-xl);
+  text-align: center;
+}
+
+.tasks .list.prioritized .heading .counter {
+  background: var(--yellow-100);
+  color: var(--yellow-500);
+}
+
+.tasks .list.completed .heading .counter {
+  background: transparent;
+  opacity: 1;
+}
+
+/* tasks */
+
+.tasks .list .task {
+  position: relative;
+  isolation: isolate;
+  min-height: 44px;
+  padding: 6px 0;
+}
+
+.tasks .list .task:nth-child(odd)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -12px;
+  right: -12px;
+  z-index: -1;
+  background: #fff3;
+  pointer-events: none;
+}
+
+.tasks .list.completed .task::after {
+  content: none;
+}
+
+.tasks .list .task[draggable="true"]:hover {
+  cursor: grab;
+}
+
+.tasks .list .task[data-dragging] {
+  opacity: 0.4;
+  background: var(--gray-200);
+  cursor: grabbing;
+}
+
+.tasks .list .task[data-editing] .complete-task,
+.tasks .list .task[data-editing] .button-wrapper.actions {
+  display: none;
+}
+
+.tasks .list .task[data-editing] img.grip,
+.tasks .list .task[data-editing] svg.grip,
+.tasks .list.completed .task img.grip,
+.tasks .list.completed .task svg.grip {
+  display: none;
+}
+
+.tasks .task img.grip,
+.tasks .task svg.grip {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  color: transparent;
+  cursor: grab;
+  transition: color 0.2s;
+  transform: translateY(-50%);
+}
+
+.tasks .task:hover img.grip,
+.tasks .task:hover svg.grip {
+  color: var(--gray-400);
+}
+
+.tasks .task[data-dragging] img.grip,
+.tasks .task[data-dragging] svg.grip {
+  left: 0;
+}
+
+.tasks .complete-task div:first-child {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.tasks .list.completed .complete-task div:first-child label {
+  cursor: unset;
+  pointer-events: none;
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.tasks .complete-task input[type="checkbox"] {
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.tasks .complete-task input[type="checkbox"] ~ span {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--gray-400);
+  border-radius: var(--radius-s);
+  background: var(--gray-100);
+  font-size: var(--text-xs);
+  line-height: 44px;
+  text-align: center;
+  pointer-events: none;
+  transition: background 0.1s;
+  transform: translateY(-50%);
+}
+
+.tasks .complete-task input[type="checkbox"]:hover ~ span,
+.tasks .complete-task input[type="checkbox"]:focus-visible ~ span {
+  background: var(--gray-300);
+}
+
+.tasks .complete-task input[type="checkbox"] ~ span::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 1ch;
+  width: 6px;
+  height: 12px;
+  border: solid var(--gray-100);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.tasks .complete-task input[type="checkbox"]:checked ~ span {
+  border-color: var(--color-text-muted);
+  background: var(--color-text-muted);
+  opacity: 1;
+}
+
+.tasks .complete-task input[type="checkbox"]:checked:hover ~ span {
+  border-color: var(--gray-400);
+  background: var(--gray-300);
+}
+
+.tasks .complete-task input[type="checkbox"]:checked:hover ~ span:after {
+  border-color: transparent;
+}
+
+.tasks .complete-task .details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 0 0 6px 44px;
+  padding-left: 6px;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.tasks .complete-task .details > p {
+  display: flex;
+  align-items: center;
+}
+
+.tasks .complete-task .details > p + p::before {
+  content: '·';
+  margin-right: 1ch;
+}
+
+.tasks .complete-task .details time[data-due],
+.tasks .complete-task .details time.completed-date {
+  font-weight: bold;
+}
+
+.tasks .list.completed .complete-task .details time[data-due] {
+  font-weight: unset;
+  color: unset;
+}
+
+.tasks .complete-task .details time[data-due="overdue"] {
+  color: var(--red-500);
+}
+
+.tasks .complete-task .details time[data-due="upcoming"] {
+  color: var(--yellow-500);
+}
+
+.tasks .complete-task .details time.completed-date {
+  color: var(--blue-500);
+}
+
+.tasks .task .button-wrapper.actions {
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tasks .complete-task .details .button {
+  padding: 0.33ch 0.66ch;
+  border-radius: var(--radius-s);
+  background: var(--yellow-500);
+  color: var(--yellow-100);
+  line-height: 1;
+  text-align: center;
+  transition: background 0.1s;
+}
+
+.tasks .complete-task .details .button:hover,
+.tasks .complete-task .details .button:focus-visible {
+  background: var(--color-text-muted);
+  color: var(--color-bg);
+}

@@ -1,0 +1,127 @@
+.bookmarks {
+  padding: 6px var(--spacing-horizontal);
+}
+
+.bookmarks .heading {
+  position: relative;
+}
+
+.bookmarks .heading .button.mark {
+  background: transparent;
+  color: var(--red-500);
+  font-size: var(--text-m);
+}
+
+.bookmarks .heading .button.mark:hover,
+.bookmarks .heading .button.mark:focus-visible,
+.bookmarks .heading .button.mark[aria-expanded="true"] {
+  background: var(--red-500);
+  color: var(--color-bg);
+}
+
+.bookmarks .heading .form-wrapper {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -6px;
+  z-index: 1;
+  width: 100%;
+  margin: 0 6px;
+  box-shadow: var(--shadow);
+}
+
+.bookmarks .heading .form-wrapper[data-open] {
+  display: block;
+}
+
+.bookmarks .list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  list-style: none;
+}
+
+@media (min-width: 690px) {
+  .bookmarks .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1250px) {
+  .bookmarks .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.bookmarks .list .bookmark {
+  position: relative;
+}
+
+.bookmarks .list .bookmark img.grip,
+.bookmarks .list .bookmark svg.grip {
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  color: transparent;
+  cursor: grab;
+  transition: color 0.2s;
+}
+
+.bookmarks .list .bookmark:hover img.grip,
+.bookmarks .list .bookmark:hover svg.grip {
+  color: var(--color-bg);
+}
+
+.bookmarks .list .bookmark[data-dragging] img.grip,
+.bookmarks .list .bookmark[data-dragging] svg.grip {
+  color: var(--color-text);
+}
+
+.bookmarks .list .bookmark a {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 2em 1em;
+  border-radius: var(--radius-s);
+  background: var(--gray-50);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+}
+
+.bookmarks .list .bookmark a:hover,
+.bookmarks .list .bookmark a:focus-visible {
+  background: var(--red-500);
+  color: var(--color-bg);
+}
+
+.bookmarks .list .bookmark span.icon {
+  font-size: 10dvw;
+}
+
+@media (min-width: 690px) {
+  .bookmarks .list .bookmark span.icon {
+    font-size: 5dvw;
+  }
+}
+
+@media (min-width: 1670px) {
+  .bookmarks .list .bookmark span.icon {
+    font-size: 48px;
+  }
+}
+
+.bookmarks .list .bookmark .button-wrapper.actions {
+  right: 6px;
+  top: 6px;
+}
+
+.bookmarks .list .form-wrapper {
+  grid-column: 1 / -1;
+}
